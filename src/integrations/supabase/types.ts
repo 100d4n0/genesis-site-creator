@@ -14,16 +14,327 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      events: {
+        Row: {
+          created_at: string
+          description: string | null
+          ends_at: string | null
+          event_type: string
+          id: string
+          starts_at: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          ends_at?: string | null
+          event_type?: string
+          id?: string
+          starts_at?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          ends_at?: string | null
+          event_type?: string
+          id?: string
+          starts_at?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      guide_sections: {
+        Row: {
+          body: string
+          category: string
+          created_at: string
+          id: string
+          position: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          body: string
+          category?: string
+          created_at?: string
+          id?: string
+          position?: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          body?: string
+          category?: string
+          created_at?: string
+          id?: string
+          position?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      guild_seasons: {
+        Row: {
+          created_at: string
+          fame: number
+          guild_name: string
+          id: string
+          notes: string | null
+          position: number
+          season: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          fame?: number
+          guild_name: string
+          id?: string
+          notes?: string | null
+          position?: number
+          season: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          fame?: number
+          guild_name?: string
+          id?: string
+          notes?: string | null
+          position?: number
+          season?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      hall_of_fame: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          season: string
+          title: string
+          updated_at: string
+          winner: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          season: string
+          title: string
+          updated_at?: string
+          winner: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          season?: string
+          title?: string
+          updated_at?: string
+          winner?: string
+        }
+        Relationships: []
+      }
+      news: {
+        Row: {
+          body: string | null
+          category: string
+          created_at: string
+          excerpt: string | null
+          featured: boolean
+          id: string
+          published_at: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          body?: string | null
+          category?: string
+          created_at?: string
+          excerpt?: string | null
+          featured?: boolean
+          id?: string
+          published_at?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          body?: string | null
+          category?: string
+          created_at?: string
+          excerpt?: string | null
+          featured?: boolean
+          id?: string
+          published_at?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          display_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      rankings: {
+        Row: {
+          category: string
+          char_class: string | null
+          character_name: string
+          created_at: string
+          guild: string | null
+          id: string
+          level: number
+          position: number
+          score: number
+          updated_at: string
+        }
+        Insert: {
+          category?: string
+          char_class?: string | null
+          character_name: string
+          created_at?: string
+          guild?: string | null
+          id?: string
+          level?: number
+          position?: number
+          score?: number
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          char_class?: string | null
+          character_name?: string
+          created_at?: string
+          guild?: string | null
+          id?: string
+          level?: number
+          position?: number
+          score?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      server_status: {
+        Row: {
+          created_at: string
+          id: string
+          message: string | null
+          players_online: number
+          server_name: string
+          state: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          message?: string | null
+          players_online?: number
+          server_name: string
+          state?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          message?: string | null
+          players_online?: number
+          server_name?: string
+          state?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      shop_items: {
+        Row: {
+          created_at: string
+          description: string | null
+          featured: boolean
+          id: string
+          name: string
+          position: number
+          price_label: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          featured?: boolean
+          id?: string
+          name: string
+          position?: number
+          price_label?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          featured?: boolean
+          id?: string
+          name?: string
+          position?: number
+          price_label?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +461,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+    },
   },
 } as const
