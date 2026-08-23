@@ -10,33 +10,102 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ComunidadeRouteImport } from './routes/comunidade'
+import { Route as GuiaRouteImport } from './routes/guia'
+import { Route as NoticiasEventosRouteImport } from './routes/noticias-eventos'
+import { Route as RankingRouteImport } from './routes/ranking'
+import { Route as StatusServidorRouteImport } from './routes/status-servidor'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComunidadeRoute = ComunidadeRouteImport.update({
+  id: '/comunidade',
+  path: '/comunidade',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuiaRoute = GuiaRouteImport.update({
+  id: '/guia',
+  path: '/guia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NoticiasEventosRoute = NoticiasEventosRouteImport.update({
+  id: '/noticias-eventos',
+  path: '/noticias-eventos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RankingRoute = RankingRouteImport.update({
+  id: '/ranking',
+  path: '/ranking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatusServidorRoute = StatusServidorRouteImport.update({
+  id: '/status-servidor',
+  path: '/status-servidor',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/comunidade': typeof ComunidadeRoute
+  '/guia': typeof GuiaRoute
+  '/noticias-eventos': typeof NoticiasEventosRoute
+  '/ranking': typeof RankingRoute
+  '/status-servidor': typeof StatusServidorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/comunidade': typeof ComunidadeRoute
+  '/guia': typeof GuiaRoute
+  '/noticias-eventos': typeof NoticiasEventosRoute
+  '/ranking': typeof RankingRoute
+  '/status-servidor': typeof StatusServidorRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/comunidade': typeof ComunidadeRoute
+  '/guia': typeof GuiaRoute
+  '/noticias-eventos': typeof NoticiasEventosRoute
+  '/ranking': typeof RankingRoute
+  '/status-servidor': typeof StatusServidorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/comunidade'
+    | '/guia'
+    | '/noticias-eventos'
+    | '/ranking'
+    | '/status-servidor'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/comunidade'
+    | '/guia'
+    | '/noticias-eventos'
+    | '/ranking'
+    | '/status-servidor'
+  id:
+    | '__root__'
+    | '/'
+    | '/comunidade'
+    | '/guia'
+    | '/noticias-eventos'
+    | '/ranking'
+    | '/status-servidor'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ComunidadeRoute: typeof ComunidadeRoute
+  GuiaRoute: typeof GuiaRoute
+  NoticiasEventosRoute: typeof NoticiasEventosRoute
+  RankingRoute: typeof RankingRoute
+  StatusServidorRoute: typeof StatusServidorRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +117,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/comunidade': {
+      id: '/comunidade'
+      path: '/comunidade'
+      fullPath: '/comunidade'
+      preLoaderRoute: typeof ComunidadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guia': {
+      id: '/guia'
+      path: '/guia'
+      fullPath: '/guia'
+      preLoaderRoute: typeof GuiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/noticias-eventos': {
+      id: '/noticias-eventos'
+      path: '/noticias-eventos'
+      fullPath: '/noticias-eventos'
+      preLoaderRoute: typeof NoticiasEventosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ranking': {
+      id: '/ranking'
+      path: '/ranking'
+      fullPath: '/ranking'
+      preLoaderRoute: typeof RankingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/status-servidor': {
+      id: '/status-servidor'
+      path: '/status-servidor'
+      fullPath: '/status-servidor'
+      preLoaderRoute: typeof StatusServidorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ComunidadeRoute: ComunidadeRoute,
+  GuiaRoute: GuiaRoute,
+  NoticiasEventosRoute: NoticiasEventosRoute,
+  RankingRoute: RankingRoute,
+  StatusServidorRoute: StatusServidorRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
