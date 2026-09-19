@@ -10,7 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CalendarioRouteImport } from './routes/calendario'
 import { Route as ComunidadeRouteImport } from './routes/comunidade'
+import { Route as ContaRouteImport } from './routes/conta'
 import { Route as GuiaRouteImport } from './routes/guia'
 import { Route as NoticiasEventosRouteImport } from './routes/noticias-eventos'
 import { Route as RankingRouteImport } from './routes/ranking'
@@ -21,9 +25,29 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalendarioRoute = CalendarioRouteImport.update({
+  id: '/calendario',
+  path: '/calendario',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ComunidadeRoute = ComunidadeRouteImport.update({
   id: '/comunidade',
   path: '/comunidade',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContaRoute = ContaRouteImport.update({
+  id: '/conta',
+  path: '/conta',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GuiaRoute = GuiaRouteImport.update({
@@ -49,7 +73,11 @@ const StatusServidorRoute = StatusServidorRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/auth': typeof AuthRoute
+  '/calendario': typeof CalendarioRoute
   '/comunidade': typeof ComunidadeRoute
+  '/conta': typeof ContaRoute
   '/guia': typeof GuiaRoute
   '/noticias-eventos': typeof NoticiasEventosRoute
   '/ranking': typeof RankingRoute
@@ -57,7 +85,11 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/auth': typeof AuthRoute
+  '/calendario': typeof CalendarioRoute
   '/comunidade': typeof ComunidadeRoute
+  '/conta': typeof ContaRoute
   '/guia': typeof GuiaRoute
   '/noticias-eventos': typeof NoticiasEventosRoute
   '/ranking': typeof RankingRoute
@@ -66,7 +98,11 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/auth': typeof AuthRoute
+  '/calendario': typeof CalendarioRoute
   '/comunidade': typeof ComunidadeRoute
+  '/conta': typeof ContaRoute
   '/guia': typeof GuiaRoute
   '/noticias-eventos': typeof NoticiasEventosRoute
   '/ranking': typeof RankingRoute
@@ -76,7 +112,11 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
+    | '/auth'
+    | '/calendario'
     | '/comunidade'
+    | '/conta'
     | '/guia'
     | '/noticias-eventos'
     | '/ranking'
@@ -84,7 +124,11 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admin'
+    | '/auth'
+    | '/calendario'
     | '/comunidade'
+    | '/conta'
     | '/guia'
     | '/noticias-eventos'
     | '/ranking'
@@ -92,7 +136,11 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/admin'
+    | '/auth'
+    | '/calendario'
     | '/comunidade'
+    | '/conta'
     | '/guia'
     | '/noticias-eventos'
     | '/ranking'
@@ -101,7 +149,11 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  AuthRoute: typeof AuthRoute
+  CalendarioRoute: typeof CalendarioRoute
   ComunidadeRoute: typeof ComunidadeRoute
+  ContaRoute: typeof ContaRoute
   GuiaRoute: typeof GuiaRoute
   NoticiasEventosRoute: typeof NoticiasEventosRoute
   RankingRoute: typeof RankingRoute
@@ -117,11 +169,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calendario': {
+      id: '/calendario'
+      path: '/calendario'
+      fullPath: '/calendario'
+      preLoaderRoute: typeof CalendarioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/comunidade': {
       id: '/comunidade'
       path: '/comunidade'
       fullPath: '/comunidade'
       preLoaderRoute: typeof ComunidadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conta': {
+      id: '/conta'
+      path: '/conta'
+      fullPath: '/conta'
+      preLoaderRoute: typeof ContaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/guia': {
@@ -157,7 +237,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  AuthRoute: AuthRoute,
+  CalendarioRoute: CalendarioRoute,
   ComunidadeRoute: ComunidadeRoute,
+  ContaRoute: ContaRoute,
   GuiaRoute: GuiaRoute,
   NoticiasEventosRoute: NoticiasEventosRoute,
   RankingRoute: RankingRoute,

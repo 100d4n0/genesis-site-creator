@@ -11,9 +11,8 @@ import { supabase } from "@/integrations/supabase/client";
 type AuthMode = "entrar" | "registrar";
 
 export const Route = createFileRoute("/auth")({
-  validateSearch: (search: Record<string, unknown>): { mode?: AuthMode } => ({
-    mode: search['mode'] === "registrar" ? "registrar" : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): { mode?: AuthMode } =>
+    search['mode'] === "registrar" ? { mode: "registrar" } : {},
   head: () => ({
     meta: [
       { title: "Entrar ou criar conta — WYD Genesis" },
