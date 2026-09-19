@@ -34,7 +34,7 @@ const SYSTEMS = [
     n: "01",
     tag: "Comunidade",
     title: "Notícias e eventos",
-    text: "Comunicados e agenda publicados pela equipe.",
+    text: "Todos os comunicados oficiais da equipe, do mais recente ao mais antigo.",
     to: "/noticias-eventos" as const,
     img: cardWar,
   },
@@ -42,7 +42,7 @@ const SYSTEMS = [
     n: "02",
     tag: "Servidor",
     title: "Status do servidor",
-    text: "Acompanhe manutenção e avisos públicos.",
+    text: "Veja se o servidor está online, quantos jogadores há e quando haverá manutenção.",
     to: "/status-servidor" as const,
     img: cardGuild,
   },
@@ -50,7 +50,7 @@ const SYSTEMS = [
     n: "03",
     tag: "Guia",
     title: "Regras e guia",
-    text: "Segurança e orientações oficiais.",
+    text: "As regras do reino e como proteger sua conta contra perdas e invasões.",
     to: "/guia" as const,
     img: cardTreasure,
   },
@@ -58,15 +58,15 @@ const SYSTEMS = [
     n: "04",
     tag: "Comunidade",
     title: "Indicadores da comunidade",
-    text: "Rankings reais de jogadores e guildas.",
+    text: "Números gerais do reino: jogadores ativos, guildas e destaques da temporada.",
     to: "/comunidade" as const,
     img: cardWar,
   },
   {
     n: "05",
     tag: "Ranking",
-    title: "Ranking Ingame",
-    text: "Acompanhe a disputa pelo topo.",
+    title: "Ranking dos jogadores",
+    text: "Quem lidera o reino em nível e poder, atualizado pela equipe.",
     to: "/ranking" as const,
     img: cardTreasure,
   },
@@ -74,7 +74,7 @@ const SYSTEMS = [
     n: "06",
     tag: "Início",
     title: "Comece agora",
-    text: "Primeiros passos e orientações oficiais.",
+    text: "Quatro passos para baixar o jogo, criar sua conta e entrar no reino.",
     to: "/comece-agora" as const,
     img: cardGuild,
   },
@@ -82,7 +82,7 @@ const SYSTEMS = [
     n: "07",
     tag: "Eventos",
     title: "Calendário",
-    text: "Agenda real publicada pela equipe.",
+    text: "Datas e horários de guerras, invasões e eventos marcados.",
     to: "/calendario" as const,
     img: cardWar,
   },
@@ -90,7 +90,7 @@ const SYSTEMS = [
     n: "08",
     tag: "Honra",
     title: "Hall da Fama",
-    text: "Temporadas confirmadas e vencedores reais.",
+    text: "Os vencedores de cada temporada já encerrada.",
     to: "/hall-da-fama" as const,
     img: cardGuild,
   },
@@ -98,15 +98,15 @@ const SYSTEMS = [
     n: "09",
     tag: "Guildas",
     title: "Temporada de Guildas",
-    text: "Fama real e regras publicadas.",
+    text: "A classificação de fama das guildas na temporada atual.",
     to: "/temporada-guildas" as const,
     img: cardGuild,
   },
   {
     n: "10",
     tag: "Loja",
-    title: "Vitrine Especial",
-    text: "Pacotes reais em destaque.",
+    title: "Vitrine especial",
+    text: "Os pacotes e itens em destaque no momento.",
     to: "/vitrine" as const,
     img: cardTreasure,
   },
@@ -139,7 +139,9 @@ function Index() {
           />
           <h1 className="mt-6 text-4xl tracking-[0.14em] md:text-6xl">WYD GENESIS</h1>
           <div className="gold-rule mt-6 w-56" />
-          <p className="mt-6 text-lg text-muted-foreground">Portal oficial do reino</p>
+          <p className="mt-6 text-lg text-muted-foreground">
+            Portal oficial do reino — baixe o jogo, crie sua conta e acompanhe tudo em um só lugar.
+          </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg">
               <a href={DOWNLOAD_URL} target="_blank" rel="noreferrer noopener">
@@ -153,7 +155,9 @@ function Index() {
             </Button>
           </div>
           <p className="mt-8 text-sm text-muted-foreground">
-            {status.isPending ? "Consultando o reino…" : `${online} guerreiros em batalha agora`}
+            {status.isPending
+              ? "Consultando o reino…"
+              : `${online} guerreiros em batalha neste momento`}
           </p>
         </div>
       </section>
@@ -161,10 +165,10 @@ function Index() {
       <section className="mx-auto max-w-7xl px-4 py-16">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { icon: "◉", label: "Servidor", sub: "Status público", to: "/status-servidor" as const },
-            { icon: "⚔", label: "Eventos", sub: "Agenda oficial", to: "/calendario" as const },
-            { icon: "♜", label: "Guia", sub: "Sistemas e regras", to: "/guia" as const },
-            { icon: "◈", label: "Comunidade", sub: "Rankings reais", to: "/comunidade" as const },
+            { icon: "◉", label: "Servidor", sub: "Online e manutenções", to: "/status-servidor" as const },
+            { icon: "⚔", label: "Eventos", sub: "Datas e horários", to: "/calendario" as const },
+            { icon: "♜", label: "Guia", sub: "Regras e segurança", to: "/guia" as const },
+            { icon: "◈", label: "Comunidade", sub: "Números do reino", to: "/comunidade" as const },
           ].map((q) => (
             <Link
               key={q.label}
@@ -183,9 +187,12 @@ function Index() {
 
       <section className="mx-auto max-w-7xl px-4 pb-8">
         <div className="text-center">
-          <p className="text-runic">Sistemas</p>
-          <h2 className="mt-3 text-3xl md:text-4xl">Sistemas do WYD Genesis</h2>
+          <p className="text-runic">Explore o reino</p>
+          <h2 className="mt-3 text-3xl md:text-4xl">Tudo o que você encontra aqui</h2>
           <div className="gold-rule mx-auto mt-6 w-40" />
+          <p className="mx-auto mt-6 max-w-2xl text-muted-foreground">
+            Dez áreas do portal, com informações mantidas pela equipe do servidor.
+          </p>
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -222,11 +229,11 @@ function Index() {
       <section className="mx-auto max-w-7xl px-4 py-16">
         <div className="flex items-end justify-between">
           <div>
-            <p className="text-runic">Últimos comunicados</p>
-            <h2 className="mt-3 text-2xl md:text-3xl">Do salão do conselho</h2>
+            <p className="text-runic">Do salão do conselho</p>
+            <h2 className="mt-3 text-2xl md:text-3xl">Últimos comunicados da equipe</h2>
           </div>
           <Link to="/noticias-eventos" className="text-sm text-primary">
-            Ver todas →
+            Ver todos os comunicados →
           </Link>
         </div>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
