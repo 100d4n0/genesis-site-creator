@@ -10,15 +10,43 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CalendarioRouteImport } from './routes/calendario'
+import { Route as ComeceAgoraRouteImport } from './routes/comece-agora'
 import { Route as ComunidadeRouteImport } from './routes/comunidade'
+import { Route as ContaRouteImport } from './routes/conta'
 import { Route as GuiaRouteImport } from './routes/guia'
+import { Route as HallDaFamaRouteImport } from './routes/hall-da-fama'
 import { Route as NoticiasEventosRouteImport } from './routes/noticias-eventos'
 import { Route as RankingRouteImport } from './routes/ranking'
 import { Route as StatusServidorRouteImport } from './routes/status-servidor'
+import { Route as TemporadaGuildasRouteImport } from './routes/temporada-guildas'
+import { Route as VitrineRouteImport } from './routes/vitrine'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalendarioRoute = CalendarioRouteImport.update({
+  id: '/calendario',
+  path: '/calendario',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComeceAgoraRoute = ComeceAgoraRouteImport.update({
+  id: '/comece-agora',
+  path: '/comece-agora',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComunidadeRoute = ComunidadeRouteImport.update({
@@ -26,9 +54,19 @@ const ComunidadeRoute = ComunidadeRouteImport.update({
   path: '/comunidade',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContaRoute = ContaRouteImport.update({
+  id: '/conta',
+  path: '/conta',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GuiaRoute = GuiaRouteImport.update({
   id: '/guia',
   path: '/guia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HallDaFamaRoute = HallDaFamaRouteImport.update({
+  id: '/hall-da-fama',
+  path: '/hall-da-fama',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NoticiasEventosRoute = NoticiasEventosRouteImport.update({
@@ -46,66 +84,132 @@ const StatusServidorRoute = StatusServidorRouteImport.update({
   path: '/status-servidor',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TemporadaGuildasRoute = TemporadaGuildasRouteImport.update({
+  id: '/temporada-guildas',
+  path: '/temporada-guildas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VitrineRoute = VitrineRouteImport.update({
+  id: '/vitrine',
+  path: '/vitrine',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/auth': typeof AuthRoute
+  '/calendario': typeof CalendarioRoute
+  '/comece-agora': typeof ComeceAgoraRoute
   '/comunidade': typeof ComunidadeRoute
+  '/conta': typeof ContaRoute
   '/guia': typeof GuiaRoute
+  '/hall-da-fama': typeof HallDaFamaRoute
   '/noticias-eventos': typeof NoticiasEventosRoute
   '/ranking': typeof RankingRoute
   '/status-servidor': typeof StatusServidorRoute
+  '/temporada-guildas': typeof TemporadaGuildasRoute
+  '/vitrine': typeof VitrineRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/auth': typeof AuthRoute
+  '/calendario': typeof CalendarioRoute
+  '/comece-agora': typeof ComeceAgoraRoute
   '/comunidade': typeof ComunidadeRoute
+  '/conta': typeof ContaRoute
   '/guia': typeof GuiaRoute
+  '/hall-da-fama': typeof HallDaFamaRoute
   '/noticias-eventos': typeof NoticiasEventosRoute
   '/ranking': typeof RankingRoute
   '/status-servidor': typeof StatusServidorRoute
+  '/temporada-guildas': typeof TemporadaGuildasRoute
+  '/vitrine': typeof VitrineRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/auth': typeof AuthRoute
+  '/calendario': typeof CalendarioRoute
+  '/comece-agora': typeof ComeceAgoraRoute
   '/comunidade': typeof ComunidadeRoute
+  '/conta': typeof ContaRoute
   '/guia': typeof GuiaRoute
+  '/hall-da-fama': typeof HallDaFamaRoute
   '/noticias-eventos': typeof NoticiasEventosRoute
   '/ranking': typeof RankingRoute
   '/status-servidor': typeof StatusServidorRoute
+  '/temporada-guildas': typeof TemporadaGuildasRoute
+  '/vitrine': typeof VitrineRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
+    | '/auth'
+    | '/calendario'
+    | '/comece-agora'
     | '/comunidade'
+    | '/conta'
     | '/guia'
+    | '/hall-da-fama'
     | '/noticias-eventos'
     | '/ranking'
     | '/status-servidor'
+    | '/temporada-guildas'
+    | '/vitrine'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admin'
+    | '/auth'
+    | '/calendario'
+    | '/comece-agora'
     | '/comunidade'
+    | '/conta'
     | '/guia'
+    | '/hall-da-fama'
     | '/noticias-eventos'
     | '/ranking'
     | '/status-servidor'
+    | '/temporada-guildas'
+    | '/vitrine'
   id:
     | '__root__'
     | '/'
+    | '/admin'
+    | '/auth'
+    | '/calendario'
+    | '/comece-agora'
     | '/comunidade'
+    | '/conta'
     | '/guia'
+    | '/hall-da-fama'
     | '/noticias-eventos'
     | '/ranking'
     | '/status-servidor'
+    | '/temporada-guildas'
+    | '/vitrine'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  AuthRoute: typeof AuthRoute
+  CalendarioRoute: typeof CalendarioRoute
+  ComeceAgoraRoute: typeof ComeceAgoraRoute
   ComunidadeRoute: typeof ComunidadeRoute
+  ContaRoute: typeof ContaRoute
   GuiaRoute: typeof GuiaRoute
+  HallDaFamaRoute: typeof HallDaFamaRoute
   NoticiasEventosRoute: typeof NoticiasEventosRoute
   RankingRoute: typeof RankingRoute
   StatusServidorRoute: typeof StatusServidorRoute
+  TemporadaGuildasRoute: typeof TemporadaGuildasRoute
+  VitrineRoute: typeof VitrineRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -117,6 +221,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calendario': {
+      id: '/calendario'
+      path: '/calendario'
+      fullPath: '/calendario'
+      preLoaderRoute: typeof CalendarioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comece-agora': {
+      id: '/comece-agora'
+      path: '/comece-agora'
+      fullPath: '/comece-agora'
+      preLoaderRoute: typeof ComeceAgoraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/comunidade': {
       id: '/comunidade'
       path: '/comunidade'
@@ -124,11 +256,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComunidadeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/conta': {
+      id: '/conta'
+      path: '/conta'
+      fullPath: '/conta'
+      preLoaderRoute: typeof ContaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/guia': {
       id: '/guia'
       path: '/guia'
       fullPath: '/guia'
       preLoaderRoute: typeof GuiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hall-da-fama': {
+      id: '/hall-da-fama'
+      path: '/hall-da-fama'
+      fullPath: '/hall-da-fama'
+      preLoaderRoute: typeof HallDaFamaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/noticias-eventos': {
@@ -152,16 +298,38 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StatusServidorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/temporada-guildas': {
+      id: '/temporada-guildas'
+      path: '/temporada-guildas'
+      fullPath: '/temporada-guildas'
+      preLoaderRoute: typeof TemporadaGuildasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vitrine': {
+      id: '/vitrine'
+      path: '/vitrine'
+      fullPath: '/vitrine'
+      preLoaderRoute: typeof VitrineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  AuthRoute: AuthRoute,
+  CalendarioRoute: CalendarioRoute,
+  ComeceAgoraRoute: ComeceAgoraRoute,
   ComunidadeRoute: ComunidadeRoute,
+  ContaRoute: ContaRoute,
   GuiaRoute: GuiaRoute,
+  HallDaFamaRoute: HallDaFamaRoute,
   NoticiasEventosRoute: NoticiasEventosRoute,
   RankingRoute: RankingRoute,
   StatusServidorRoute: StatusServidorRoute,
+  TemporadaGuildasRoute: TemporadaGuildasRoute,
+  VitrineRoute: VitrineRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
