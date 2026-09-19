@@ -139,7 +139,9 @@ function Index() {
           />
           <h1 className="mt-6 text-4xl tracking-[0.14em] md:text-6xl">WYD GENESIS</h1>
           <div className="gold-rule mt-6 w-56" />
-          <p className="mt-6 text-lg text-muted-foreground">Portal oficial do reino</p>
+          <p className="mt-6 text-lg text-muted-foreground">
+            Portal oficial do reino — baixe o jogo, crie sua conta e acompanhe tudo em um só lugar.
+          </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg">
               <a href={DOWNLOAD_URL} target="_blank" rel="noreferrer noopener">
@@ -153,7 +155,9 @@ function Index() {
             </Button>
           </div>
           <p className="mt-8 text-sm text-muted-foreground">
-            {status.isPending ? "Consultando o reino…" : `${online} guerreiros em batalha agora`}
+            {status.isPending
+              ? "Consultando o reino…"
+              : `${online} guerreiros em batalha neste momento`}
           </p>
         </div>
       </section>
@@ -161,10 +165,10 @@ function Index() {
       <section className="mx-auto max-w-7xl px-4 py-16">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { icon: "◉", label: "Servidor", sub: "Status público", to: "/status-servidor" as const },
-            { icon: "⚔", label: "Eventos", sub: "Agenda oficial", to: "/calendario" as const },
-            { icon: "♜", label: "Guia", sub: "Sistemas e regras", to: "/guia" as const },
-            { icon: "◈", label: "Comunidade", sub: "Rankings reais", to: "/comunidade" as const },
+            { icon: "◉", label: "Servidor", sub: "Online e manutenções", to: "/status-servidor" as const },
+            { icon: "⚔", label: "Eventos", sub: "Datas e horários", to: "/calendario" as const },
+            { icon: "♜", label: "Guia", sub: "Regras e segurança", to: "/guia" as const },
+            { icon: "◈", label: "Comunidade", sub: "Números do reino", to: "/comunidade" as const },
           ].map((q) => (
             <Link
               key={q.label}
@@ -183,9 +187,12 @@ function Index() {
 
       <section className="mx-auto max-w-7xl px-4 pb-8">
         <div className="text-center">
-          <p className="text-runic">Sistemas</p>
-          <h2 className="mt-3 text-3xl md:text-4xl">Sistemas do WYD Genesis</h2>
+          <p className="text-runic">Explore o reino</p>
+          <h2 className="mt-3 text-3xl md:text-4xl">Tudo o que você encontra aqui</h2>
           <div className="gold-rule mx-auto mt-6 w-40" />
+          <p className="mx-auto mt-6 max-w-2xl text-muted-foreground">
+            Dez áreas do portal, com informações mantidas pela equipe do servidor.
+          </p>
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
