@@ -229,11 +229,11 @@ function Index() {
       <section className="mx-auto max-w-7xl px-4 py-16">
         <div className="flex items-end justify-between">
           <div>
-            <p className="text-runic">Últimos comunicados</p>
-            <h2 className="mt-3 text-2xl md:text-3xl">Do salão do conselho</h2>
+            <p className="text-runic">Do salão do conselho</p>
+            <h2 className="mt-3 text-2xl md:text-3xl">Últimos comunicados da equipe</h2>
           </div>
           <Link to="/noticias-eventos" className="text-sm text-primary">
-            Ver todas →
+            Ver todos os comunicados →
           </Link>
         </div>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
