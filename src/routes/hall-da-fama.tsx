@@ -2,7 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 
 import { EmptyState, LoadingState, PageShell } from "@/components/site/PageShell";
+import { Badge } from "@/components/ui/badge";
 import { hallOfFameQuery } from "@/lib/queries";
+import { Crown, ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/hall-da-fama")({
   head: () => ({
@@ -28,7 +30,7 @@ function HallPage() {
     <PageShell
       eyebrow="08 · Honra"
       title="Hall da Fama"
-      description="Vencedores reais das temporadas encerradas."
+      description="Campeões confirmados por temporada e registros demonstrativos da importação inicial."
     >
       {isPending ? <LoadingState /> : null}
       {error ? <EmptyState>Não foi possível carregar o Hall da Fama agora.</EmptyState> : null}
@@ -37,9 +39,15 @@ function HallPage() {
       <div className="grid gap-5 md:grid-cols-2">
         {(data ?? []).map((entry) => (
           <article key={entry.id} className="panel rounded-lg p-6 md:p-8">
-            <p className="text-runic">Temporada {entry.season}</p>
+            <div className="flex items-center justify-between gap-4">
+              <Crown className="h-7 w-7 text-primary" aria-hidden="true" />
+              <Badge variant="outline">{entry.season}</Badge>
+            </div>
             <h2 className="mt-3 text-xl">{entry.title}</h2>
-            <p className="mt-2 text-primary">{entry.winner}</p>
+            <p className="mt-3 flex items-center gap-2 text-lg text-primary">
+              <ShieldCheck className="h-4 w-4" aria-hidden="true" />
+              {entry.winner}
+            </p>
             {entry.description ? (
               <p className="mt-3 leading-relaxed text-muted-foreground">{entry.description}</p>
             ) : null}

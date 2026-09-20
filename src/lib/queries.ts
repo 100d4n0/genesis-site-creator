@@ -2,6 +2,12 @@ import { queryOptions } from "@tanstack/react-query";
 
 import { supabase } from "@/integrations/supabase/client";
 import type { Database } from "@/integrations/supabase/types";
+import {
+  importedHallOfFame,
+  importedNews,
+  importedRankings,
+  importedShopItems,
+} from "@/lib/imported-content";
 
 type Tables = Database["public"]["Tables"];
 export type News = Tables["news"]["Row"];
@@ -20,10 +26,26 @@ async function run<T>(promise: PromiseLike<{ data: T | null; error: { message: s
   return (data ?? []) as unknown as T;
 }
 
+function mergeImportedRows<T extends { id: string }>(databaseRows: T[], importedRows: T[]) {
+  const rowsById = new Map(importedRows.map((row) => [row.id, row]));
+  databaseRows.forEach((row) => rowsById.set(row.id, row));
+  return Array.from(rowsById.values());
+}
+
 export const newsQuery = queryOptions({
   queryKey: ["news"],
-  queryFn: () =>
-    run<News[]>(supabase.from("news").select("*").order("published_at", { ascending: false })),
+  queryFn: async () => {
+    try {
+      const rows = await run<News[]>(
+        supabase.from("news").select("*").order("published_at", { ascending: false }),
+      );
+      return mergeImportedRows(rows, importedNews).sort(
+        (a, b) => Date.parse(b.published_at) - Date.parse(a.published_at),
+      );
+    } catch {
+      return importedNews;
+    }
+  },
 });
 
 export const eventsQuery = queryOptions({
@@ -42,8 +64,16 @@ export const serverStatusQuery = queryOptions({
 
 export const rankingsQuery = queryOptions({
   queryKey: ["rankings"],
-  queryFn: () =>
-    run<Ranking[]>(supabase.from("rankings").select("*").order("position", { ascending: true })),
+  queryFn: async () => {
+    try {
+      const rows = await run<Ranking[]>(
+        supabase.from("rankings").select("*").order("position", { ascending: true }),
+      );
+      return mergeImportedRows(rows, importedRankings);
+    } catch {
+      return importedRankings;
+    }
+  },
 });
 
 export const guildSeasonsQuery = queryOptions({
@@ -60,16 +90,30 @@ export const guildSeasonsQuery = queryOptions({
 
 export const hallOfFameQuery = queryOptions({
   queryKey: ["hall_of_fame"],
-  queryFn: () =>
-    run<HallOfFame[]>(
-      supabase.from("hall_of_fame").select("*").order("season", { ascending: false }),
-    ),
+  queryFn: async () => {
+    try {
+      const rows = await run<HallOfFame[]>(
+        supabase.from("hall_of_fame").select("*").order("season", { ascending: false }),
+      );
+      return mergeImportedRows(rows, importedHallOfFame);
+    } catch {
+      return importedHallOfFame;
+    }
+  },
 });
 
 export const shopItemsQuery = queryOptions({
   queryKey: ["shop_items"],
-  queryFn: () =>
-    run<ShopItem[]>(supabase.from("shop_items").select("*").order("position", { ascending: true })),
+  queryFn: async () => {
+    try {
+      const rows = await run<ShopItem[]>(
+        supabase.from("shop_items").select("*").order("position", { ascending: true }),
+      );
+      return mergeImportedRows(rows, importedShopItems).sort((a, b) => a.position - b.position);
+    } catch {
+      return importedShopItems;
+    }
+  },
 });
 
 export const guideSectionsQuery = queryOptions({

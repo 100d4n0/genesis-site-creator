@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { EmptyState, LoadingState, PageShell } from "@/components/site/PageShell";
 import { Badge } from "@/components/ui/badge";
 import { newsQuery } from "@/lib/queries";
+import { Newspaper } from "lucide-react";
 
 export const Route = createFileRoute("/noticias-eventos")({
   head: () => ({
@@ -18,6 +19,8 @@ export const Route = createFileRoute("/noticias-eventos")({
         property: "og:description",
         content: "Comunicados e agenda oficial do reino WYD Genesis.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: NewsPage,
@@ -40,6 +43,7 @@ function NewsPage() {
         {(data ?? []).map((item) => (
           <article key={item.id} className="panel rounded-lg p-6 md:p-8">
             <div className="flex flex-wrap items-center gap-3">
+              <Newspaper className="h-5 w-5 text-primary" aria-hidden="true" />
               <Badge variant="outline" className="border-primary/50 text-primary">
                 {item.category}
               </Badge>
